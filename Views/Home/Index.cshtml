@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home - C# Garbage Collector Course";
+}
+@section Title {
+    <title>Home - C# Garbage Collector Course</title>
+}
+
+<div class="hero-section">
+    <h1>Welcome to the C# Garbage Collector Course</h1>
+    <p>This course will guide you through the essential concepts of the C# Garbage Collector. By the end of this course, you'll understand how the garbage collector works and how to use it to optimize memory management in your .NET applications.</p>
+    <a href="@Url.Action("Chapter1", "Home")" class="btn btn-primary-custom">Start Chapter 1</a>
+</div>
+
+<!-- Introduction Video Section -->
+<div class="video-section mt-5">
+    <h2>Introduction to the C# Garbage Collector</h2>
+    <div class="video-placeholder">
+        <!-- Replace this with the actual video later -->
+        <video controls>
+            <source src="~/videos/csharpvid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<div class="mt-5">
+    <h3>What You'll Learn:</h3>
+    <ul class="list-group">
+        <li class="list-group-item">Understanding the Garbage Collector</li>
+        <li class="list-group-item">Memory Management in .NET</li>
+        <li class="list-group-item">Optimizing Performance with the GC</li>
+        <li class="list-group-item">Common Pitfalls and Best Practices</li>
+    </ul>
+</div>
+

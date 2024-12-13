@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - C# Garbage Collector Course</title>
+    @RenderSection("Title", required: false)
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers the content horizontally */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            height: 60px;
+        }
+
+            .top-bar h2 {
+                font-size: 1.8rem;
+                margin-left: 10px;
+            }
+
+            .top-bar img {
+                height: 40px;
+                margin-right: 10px; /* Adjust space between logo and title */
+            }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2d2f33;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 60px; /* Position the sidebar below the top bar */
+            bottom: 0;
+            height: calc(100vh - 60px); /* Fill remaining height after top bar */
+        }
+
+            .sidebar a {
+                color: #adb5bd;
+                text-decoration: none;
+                display: block;
+                margin-bottom: 10px;
+                font-size: 1.1em;
+            }
+
+                .sidebar a:hover {
+                    color: #ffdf91;
+                }
+
+        .main-content {
+            margin-left: 250px; /* Ensure content does not overlap with sidebar */
+            padding: 20px;
+            background-color: #f4f4f9;
+            margin-top: 80px; /* Ensure content is below the top bar */
+            flex-grow: 1;
+        }
+
+        .hero-section {
+            background-color: #007bff;
+            color: white;
+            padding: 60px 30px;
+            border-radius: 8px;
+            margin-top: 80px; /* Ensure content starts below the top bar */
+        }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+
+        .btn-primary-custom {
+            background-color: #ffdf91;
+            color: #343a40;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .btn-primary-custom:hover {
+                background-color: #ffc107;
+            }
+
+        .mt-5 {
+            margin-top: 20px;
+        }
+
+        /* Additional CSS for the video section */
+        .video-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f4f4f9;
+            border-radius: 8px;
+            width: 60%; /* Set the width of the video container */
+            max-width: 960px; /* Limit max width */
+            margin: 20px auto; /* Center the video section */
+        }
+
+            .video-section video {
+                width: 100%; /* Make the video fill the container width */
+                height: auto; /* Maintain the aspect ratio */
+            }
+
+        .video-placeholder {
+            background-color: #e0e0e0;
+            width: 60%;
+            height: auto;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+            .video-placeholder p {
+                background-color: #e0e0e0;
+                width: 60%;
+                height: auto;
+                max-width: 800px;
+                display: block;
+                margin: 0 auto;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+                color: #333;
+                font-size: 1.2rem;
+            }
+
+        .navbar {
+            height: 70px; /* Adjust as needed */
+            display: flex;
+            align-items: center; /* Vertical centering */
+            justify-content: center; /* Horizontal centering */
+            background-color: #007bff; /* Custom blue shade */
+            color: white; /* Ensure text is white for contrast */
+        }
+
+        .navbar-brand {
+            color: white;
+            text-decoration: none; /* Remove underline from the link */
+            display: flex;
+            align-items: center; /* Align the logo and title vertically */
+            text-align: center;
+        }
+
+        .logo {
+            height: 40px; /* Adjust logo size */
+            margin-right: 10px; /* Add spacing between the logo and the title */
+        }
+
+        .navbar-title {
+            color: white;
+            text-decoration: none; /* Remove underline from the link */
+            font-size: 1.5rem; /* Adjust font size of the title */
+            font-weight: bold;
+        }
+
+        .navbar .navbar-brand:hover,
+        .navbar .navbar-title:hover {
+            color: #cce4ff; /* Light blue hover effect */
+        }
+            
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Logo and Title -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container d-flex justify-content-center align-items-center">
+            <!-- Logo and Title -->
+            <a class="navbar-brand d-flex align-items-center" href="@Url.Action("Index", "Home")">
+                <img src="~/images/csharplogo.png" alt="Logo" class="logo">
+                <span class="navbar-title">C# Garbage Collector Course</span>
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="@Url.Action("Index", "Home")">Home Page</a>
+        <a href="@Url.Action("Chapter1", "Home")">Chapter 1</a>
+        <a href="@Url.Action("Chapter2", "Home")">Chapter 2</a>
+        <a href="@Url.Action("Chapter3", "Home")">Chapter 3</a>
+        <a href="@Url.Action("FinalTest", "Home")">Final Test</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        @RenderBody() <!-- Content from each page will be rendered here -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

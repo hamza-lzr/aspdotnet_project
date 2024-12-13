@@ -1,0 +1,39 @@
+﻿@section Title {
+    <title>Chapter 2 - Understanding the C# Garbage Collector</title>
+}
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Chapter 2: Understanding the C# Garbage Collector";
+}
+
+<div class="content-container">
+    <h1>Chapter 2: Understanding the C# Garbage Collector</h1>
+
+    <div class="info-box">
+        <p>
+            Introduction: In this chapter, we delve into the inner workings of the C# Garbage Collector (GC), 
+            which is a key part of the .NET runtime responsible for managing memory. Understanding the GC's 
+            operation helps optimize memory usage and improve application performance.
+        </p>
+    </div>
+
+    <h3>Key Concepts</h3>
+    <ul class="list-group mb-4">
+        <li class="list-group-item">What is Memory Management?</li>
+        <li class="list-group-item">Understanding Generations</li>
+        <li class="list-group-item">Understanding the Collection Process</li>
+    </ul>
+    <div class="video-section">
+        <video controls>
+            <source src="~/videos/csharpvid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="navigation-btn">
+        <a href="/Home/Chapter1" class="btn btn-secondary">Back to Chapter 1</a>
+        <a href="@Url.Action("Chapter3", "Home")" class="btn btn-primary-custom">Next Chapter: Chapter 3</a>
+    </div>
+</div>
+
+

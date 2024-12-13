@@ -1,0 +1,39 @@
+﻿@section Title {
+    <title>Chapter 1 - Introduction to the Garbage Collector</title>
+}
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Chapter 1: Introduction to the Garbage Collector";
+}
+
+
+<div class="content-container">
+<h1>Chapter 1: Introduction to the Garbage Collector</h1>
+<div class="info-box">
+    <p>
+        The Garbage Collector (GC) in C# is an essential component of the .NET runtime, responsible for
+        automatically managing memory allocation and deallocation. This ensures efficient use of memory,
+        prevents memory leaks, and simplifies programming by abstracting manual memory management.
+    </p>
+</div>
+
+<h3>Key Concepts</h3>
+<ul class="list-group mb-4">
+    <li class="list-group-item">What is the Garbage Collector?</li>
+    <li class="list-group-item">Why is it important in .NET?</li>
+    <li class="list-group-item">How does it work internally?</li>
+</ul>
+
+<div class="video-section">
+    <video controls>
+        <source src="~/videos/csharpvid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="navigation-btn">
+    <a href="/" class="btn btn-secondary">Back to Home</a>
+    <a href="@Url.Action("Chapter2", "Home")" class="btn btn-primary-custom">Next Chapter: Chapter 2</a>
+</div>
+
+</div>
